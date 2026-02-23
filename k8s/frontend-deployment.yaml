@@ -4,16 +4,16 @@ metadata:
   name: house-frontend
 spec:
   replicas: 2
-  selector: 
-    matchlabels: 
+  selector:
+    matchLabels:
       app: house-frontend
   template:
     metadata:
       labels:
         app: house-frontend
-    spec:    
+    spec:
       containers:
         - name: house-frontend
-          image: sudhir/house-frontend:latest
+          image: sudhir9999/house-frontend:latest
           ports:
-            - containers
+            - containerPort: 80

@@ -1,13 +1,13 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: house-backend
 spec:
   replicas: 2
   selector:
-    matchlabels:
+    matchLabels:
       app: house-backend
-  template: 
+  template:
     metadata:
       labels:
         app: house-backend
@@ -15,5 +15,12 @@ spec:
       containers:
         - name: house-backend
           image: sudhir9999/house-backend:latest
-          ports: 
-            - containers    
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:mysql://mysql-service:3306/house
+            - name: SPRING_DATASOURCE_USERNAME
+              value: root
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: root            
