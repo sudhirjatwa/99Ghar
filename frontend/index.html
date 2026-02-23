@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Rental Service</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <div class="nav__logo">Home<span>Rental</span></div>
+      <nav class="nav__links">
+        <a href="#explore">Explore</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#host">Become a host</a>
+      </nav>
+      <div class="nav__actions">
+        <span id="authUserLabel" class="auth-user-label hidden"></span>
+        <button id="loginBtn" class="btn btn--ghost">Log in</button>
+        <button id="signupBtn" class="btn btn--primary">Sign up</button>
+        <button id="logoutBtn" class="btn btn--ghost hidden">Log out</button>
+        <button id="switchAccountBtn" class="btn btn--ghost hidden">Switch account</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" id="top">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Find your next stay</p>
+          <h1 class="hero__title">
+            Beautiful homes for every
+            <span class="hero__highlight">lifestyle & budget</span>.
+          </h1>
+          <p class="hero__subtitle">
+            Discover hand‑picked rentals in top locations, with transparent
+            pricing and flexible stays.
+          </p>
+
+          <div class="hero__search-card">
+            <div class="search-row">
+              <div class="field">
+                <label for="city">City & Area</label>
+                <select id="city">
+                  <option value="">Select city & area</option>
+                  <!-- Tier 1 Cities -->
+                  <optgroup label="Tier 1 Cities">
+                    <option value="Mumbai">Mumbai - Bandra</option>
+                    <option value="Mumbai">Mumbai - Andheri</option>
+                    <option value="Mumbai">Mumbai - Powai</option>
+                    <option value="Mumbai">Mumbai - Worli</option>
+                    <option value="Mumbai">Mumbai - Juhu</option>
+                    <option value="Delhi">Delhi - Connaught Place</option>
+                    <option value="Delhi">Delhi - Dwarka</option>
+                    <option value="Delhi">Delhi - Gurgaon</option>
+                    <option value="Delhi">Delhi - Noida</option>
+                    <option value="Delhi">Delhi - Saket</option>
+                    <option value="Bangalore">Bangalore - Koramangala</option>
+                    <option value="Bangalore">Bangalore - Indiranagar</option>
+                    <option value="Bangalore">Bangalore - Whitefield</option>
+                    <option value="Bangalore">Bangalore - Electronic City</option>
+                    <option value="Bangalore">Bangalore - HSR Layout</option>
+                    <option value="Hyderabad">Hyderabad - Hitech City</option>
+                    <option value="Hyderabad">Hyderabad - Gachibowli</option>
+                    <option value="Hyderabad">Hyderabad - Banjara Hills</option>
+                    <option value="Hyderabad">Hyderabad - Kondapur</option>
+                    <option value="Chennai">Chennai - T Nagar</option>
+                    <option value="Chennai">Chennai - OMR</option>
+                    <option value="Chennai">Chennai - Adyar</option>
+                    <option value="Chennai">Chennai - Velachery</option>
+                    <option value="Kolkata">Kolkata - Salt Lake</option>
+                    <option value="Kolkata">Kolkata - Park Street</option>
+                    <option value="Kolkata">Kolkata - New Town</option>
+                    <option value="Pune">Pune - Hinjewadi</option>
+                    <option value="Pune">Pune - Kothrud</option>
+                    <option value="Pune">Pune - Viman Nagar</option>
+                    <option value="Pune">Pune - Baner</option>
+                  </optgroup>
+                  <!-- Tier 2 Cities -->
+                  <optgroup label="Tier 2 Cities">
+                    <option value="Ahmedabad">Ahmedabad - Prahlad Nagar</option>
+                    <option value="Ahmedabad">Ahmedabad - Satellite</option>
+                    <option value="Ahmedabad">Ahmedabad - Vastrapur</option>
+                    <option value="Jaipur">Jaipur - Malviya Nagar</option>
+                    <option value="Jaipur">Jaipur - Vaishali Nagar</option>
+                    <option value="Jaipur">Jaipur - C-Scheme</option>
+                    <option value="Surat">Surat - Vesu</option>
+                    <option value="Surat">Surat - Adajan</option>
+                    <option value="Lucknow">Lucknow - Gomti Nagar</option>
+                    <option value="Lucknow">Lucknow - Hazratganj</option>
+                    <option value="Nagpur">Nagpur - Civil Lines</option>
+                    <option value="Nagpur">Nagpur - Dharampeth</option>
+                    <option value="Indore">Indore - Vijay Nagar</option>
+                    <option value="Indore">Indore - New Palasia</option>
+                    <option value="Chandigarh">Chandigarh - Sector 17</option>
+                    <option value="Chandigarh">Chandigarh - Sector 22</option>
+                    <option value="Coimbatore">Coimbatore - RS Puram</option>
+                    <option value="Coimbatore">Coimbatore - Race Course</option>
+                    <option value="Vadodara">Vadodara - Alkapuri</option>
+                    <option value="Vadodara">Vadodara - Gotri</option>
+                    <option value="Kochi">Kochi - Marine Drive</option>
+                    <option value="Kochi">Kochi - Kakkanad</option>
+                    <option value="Bhopal">Bhopal - Arera Colony</option>
+                    <option value="Bhopal">Bhopal - MP Nagar</option>
+                    <option value="Visakhapatnam">Visakhapatnam - MVP Colony</option>
+                    <option value="Visakhapatnam">Visakhapatnam - Beach Road</option>
+                    <option value="Patna">Patna - Boring Road</option>
+                    <option value="Patna">Patna - Kankarbagh</option>
+                    <option value="Vadodara">Vadodara - Alkapuri</option>
+                    <option value="Ludhiana">Ludhiana - Model Town</option>
+                    <option value="Agra">Agra - Taj Ganj</option>
+                    <option value="Nashik">Nashik - Gangapur Road</option>
+                    <option value="Faridabad">Faridabad - Sector 21</option>
+                    <option value="Meerut">Meerut - Begum Bridge</option>
+                    <option value="Rajkot">Rajkot - Kalawad Road</option>
+                    <option value="Srinagar">Srinagar - Dal Lake</option>
+                    <option value="Amritsar">Amritsar - Lawrence Road</option>
+                    <option value="Ranchi">Ranchi - Harmu</option>
+                    <option value="Raipur">Raipur - Shankar Nagar</option>
+                    <option value="Gwalior">Gwalior - City Center</option>
+                    <option value="Jodhpur">Jodhpur - Sardarpura</option>
+                  </optgroup>
+                </select>
+              </div>
+              <div class="field">
+                <label for="minPrice">Min price (₹)</label>
+                <input type="number" id="minPrice" placeholder="5000" min="5000" step="1000" />
+              </div>
+              <div class="field">
+                <label for="maxPrice">Max price (₹)</label>
+                <input type="number" id="maxPrice" placeholder="300000" max="300000" step="10000" />
+              </div>
+              <div class="field">
+                <label for="bedrooms">Bedrooms</label>
+                <select id="bedrooms">
+                  <option value="">Any</option>
+                  <option value="1">1+</option>
+                  <option value="2">2+</option>
+                  <option value="3">3+</option>
+                  <option value="4">4+</option>
+                  <option value="5">5+</option>
+                </select>
+              </div>
+            </div>
+            <div class="search-row search-row--footer">
+              <div class="search-row__hint">
+                Smart filters • Verified listings • Real‑time availability
+              </div>
+              <button id="searchBtn" class="btn btn--primary btn--lg">
+                Search homes
+              </button>
+            </div>
+          </div>
+
+          <div class="hero__stats">
+            <div>
+              <span class="hero__stat-number">4.9★</span>
+              <span class="hero__stat-label">Average guest rating</span>
+            </div>
+            <div>
+              <span class="hero__stat-number">10k+</span>
+              <span class="hero__stat-label">Verified rentals</span>
+            </div>
+            <div>
+              <span class="hero__stat-number">120+</span>
+              <span class="hero__stat-label">Cities covered</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero__card hero__card--primary">
+            <h3>Curated homes</h3>
+            <p>Every listing is manually reviewed for quality and safety.</p>
+          </div>
+          <div class="hero__card hero__card--secondary">
+            <h3>Instant bookings</h3>
+            <p>Book verified properties with instant confirmation.</p>
+          </div>
+          <div class="hero__mock">
+            <div class="hero__mock-image"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Explore Section -->
+      <section class="section" id="explore">
+        <div class="section__header">
+          <div>
+            <h2>Explore rentals</h2>
+            <p>Browse featured homes, apartments and villas.</p>
+          </div>
+          <div class="section__tabs">
+            <button class="chip chip--active" data-type="all">
+              All
+            </button>
+            <button class="chip" data-type="apartment">Apartments</button>
+            <button class="chip" data-type="house">Houses</button>
+            <button class="chip" data-type="villa">Villas</button>
+          </div>
+        </div>
+
+        <div id="propertiesGrid" class="properties-grid">
+          <!-- Cards rendered dynamically from app.js -->
+        </div>
+
+        <div id="emptyState" class="empty-state hidden">
+          <h3>No homes found for your filters</h3>
+          <p>Try adjusting your filters or searching a different area.</p>
+          <button id="clearFiltersBtn" class="btn btn--ghost">
+            Clear filters
+          </button>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="section section--alt" id="how-it-works">
+        <div class="section__header">
+          <div>
+            <h2>How it works</h2>
+            <p>Three simple steps to your next home.</p>
+          </div>
+        </div>
+
+        <div class="steps">
+          <article class="step">
+            <span class="step__badge">1</span>
+            <h3>Search smart</h3>
+            <p>
+              Use powerful filters to find homes that match your budget,
+              commute and lifestyle.
+            </p>
+          </article>
+          <article class="step">
+            <span class="step__badge">2</span>
+            <h3>Visit & verify</h3>
+            <p>
+              Schedule visits, explore neighborhoods and review detailed
+              amenities before you commit.
+            </p>
+          </article>
+          <article class="step">
+            <span class="step__badge">3</span>
+            <h3>Book with confidence</h3>
+            <p>
+              Secure online agreements, transparent pricing and dedicated
+              support throughout your stay.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Host section -->
+      <section class="section" id="host">
+        <div class="host">
+          <div class="host__content">
+            <h2>Become a host</h2>
+            <p>
+              Turn your extra space into steady income. List your property in
+              minutes and reach thousands of verified tenants.
+            </p>
+            <ul class="host__list">
+              <li>Smart pricing suggestions based on market data</li>
+              <li>In‑app lead management and visit scheduling</li>
+              <li>Dedicated support team for documentation</li>
+            </ul>
+            <button id="listPropertyBtn" class="btn btn--primary">List your property</button>
+          </div>
+          <div class="host__stats">
+            <div class="host__stat">
+              <span class="host__stat-number">+32%</span>
+              <span class="host__stat-label">Higher occupancy with smart pricing</span>
+            </div>
+            <div class="host__stat">
+              <span class="host__stat-number">7 days</span>
+              <span class="host__stat-label">Average time to first booking</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Property Detail Modal -->
+    <div id="propertyModal" class="modal hidden">
+      <div class="modal__overlay"></div>
+      <div class="modal__content">
+        <button id="closeModalBtn" class="modal__close">&times;</button>
+        <div class="modal__body">
+          <div class="modal__image"></div>
+          <div class="modal__info">
+            <h2 id="modalTitle"></h2>
+            <p id="modalLocation" class="modal__location"></p>
+            <p id="modalPrice" class="modal__price"></p>
+            <p id="modalDescription" class="modal__description"></p>
+
+            <div class="modal__meta">
+              <span id="modalBedrooms"></span>
+              <span id="modalBathrooms"></span>
+              <span id="modalArea"></span>
+            </div>
+
+            <div class="modal__specs">
+              <h3>Property Specifications</h3>
+              <div class="specs-grid">
+                <div class="spec-item">
+                  <span class="spec-label">Property Type:</span>
+                  <span id="modalPropertyType" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Furnishing:</span>
+                  <span id="modalFurnishing" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Floor:</span>
+                  <span id="modalFloor" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Total Floors:</span>
+                  <span id="modalTotalFloors" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Parking:</span>
+                  <span id="modalParking" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Lift:</span>
+                  <span id="modalLift" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Power Backup:</span>
+                  <span id="modalPowerBackup" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Security:</span>
+                  <span id="modalSecurity" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Facing:</span>
+                  <span id="modalFacing" class="spec-value">—</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-label">Property Age:</span>
+                  <span id="modalAge" class="spec-value">—</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="modal__amenities">
+              <h3>Amenities</h3>
+              <div id="modalAmenities" class="amenities-list"></div>
+            </div>
+
+            <div class="modal__nearby">
+              <h3>Nearby Locations</h3>
+              <div id="modalNearby" class="nearby-list"></div>
+            </div>
+
+            <form id="contactForm" class="modal__form">
+              <h3>Contact the owner</h3>
+              <div class="field">
+                <label for="contactName">Name</label>
+                <input
+                  type="text"
+                  id="contactName"
+                  placeholder="Your full name"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="contactEmail">Email</label>
+                <input
+                  type="email"
+                  id="contactEmail"
+                  placeholder="you@example.com"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="contactMessage">Message</label>
+                <textarea
+                  id="contactMessage"
+                  rows="3"
+                  placeholder="I’m interested in this property. Please share more details."
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary btn--full">
+                Send inquiry
+              </button>
+              <p id="contactStatus" class="modal__status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal" class="modal hidden">
+      <div class="modal__overlay"></div>
+      <div class="modal__content auth-modal__content">
+        <button id="closeAuthModalBtn" class="modal__close">&times;</button>
+        <div class="auth-modal__body">
+          <div class="auth-modal__header">
+            <button id="authTabLogin" class="auth-tab auth-tab--active">
+              Log in
+            </button>
+            <button id="authTabSignup" class="auth-tab">
+              Sign up
+            </button>
+          </div>
+
+          <form id="loginForm" class="auth-form">
+            <h2>Welcome back</h2>
+            <p class="auth-form__subtitle">
+              Log in to manage your favourites, visits and bookings.
+            </p>
+            <div class="field">
+              <label for="loginEmail">Email</label>
+              <input
+                type="email"
+                id="loginEmail"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="loginPassword">Password</label>
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Your password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">
+              Log in
+            </button>
+            <p id="loginStatus" class="auth-form__status"></p>
+          </form>
+
+          <form id="signupForm" class="auth-form hidden">
+            <h2>Create an account</h2>
+            <p class="auth-form__subtitle">
+              Save your searches, shortlist homes and sync across devices.
+            </p>
+            <div class="field">
+              <label for="signupName">Full name</label>
+              <input
+                type="text"
+                id="signupName"
+                placeholder="Your full name"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="signupEmail">Email</label>
+              <input
+                type="email"
+                id="signupEmail"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
+            <div class="field">
+              <label for="signupPassword">Password</label>
+              <input
+                type="password"
+                id="signupPassword"
+                placeholder="Create a strong password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn--primary btn--full">
+              Sign up
+            </button>
+            <p id="signupStatus" class="auth-form__status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- List Property Modal -->
+    <div id="listPropertyModal" class="modal hidden">
+      <div class="modal__overlay"></div>
+      <div class="modal__content auth-modal__content" style="max-width: 700px;">
+        <button id="closeListPropertyModalBtn" class="modal__close">&times;</button>
+        <div class="auth-modal__body">
+          <h2>List Your Property</h2>
+          <p class="auth-form__subtitle">
+            Fill in the details below to list your property for rent.
+          </p>
+
+          <form id="listPropertyForm" class="auth-form">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+              <div class="field">
+                <label for="listTitle">Property Title *</label>
+                <input
+                  type="text"
+                  id="listTitle"
+                  placeholder="e.g., Modern 2BHK Apartment"
+                  required
+                />
+              </div>
+              <div class="field">
+                <label for="listCity">City *</label>
+                <select id="listCity" required>
+                  <option value="">Select city</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Chennai">Chennai</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Jaipur">Jaipur</option>
+                  <option value="Surat">Surat</option>
+                  <option value="Lucknow">Lucknow</option>
+                  <option value="Nagpur">Nagpur</option>
+                  <option value="Indore">Indore</option>
+                  <option value="Chandigarh">Chandigarh</option>
+                  <option value="Coimbatore">Coimbatore</option>
+                  <option value="Vadodara">Vadodara</option>
+                  <option value="Kochi">Kochi</option>
+                  <option value="Bhopal">Bhopal</option>
+                  <option value="Visakhapatnam">Visakhapatnam</option>
+                  <option value="Patna">Patna</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="listArea">Area/Locality *</label>
+              <input
+                type="text"
+                id="listArea"
+                placeholder="e.g., Koramangala, Bandra, Hitech City"
+                required
+              />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;">
+              <div class="field">
+                <label for="listBedrooms">Bedrooms *</label>
+                <select id="listBedrooms" required>
+                  <option value="">Select</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="listBathrooms">Bathrooms *</label>
+                <select id="listBathrooms" required>
+                  <option value="">Select</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="listAreaSqft">Area (sqft) *</label>
+                <input
+                  type="number"
+                  id="listAreaSqft"
+                  placeholder="e.g., 1200"
+                  min="300"
+                  required
+                />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+              <div class="field">
+                <label for="listPropertyType">Property Type *</label>
+                <select id="listPropertyType" required>
+                  <option value="">Select</option>
+                  <option value="apartment">Apartment</option>
+                  <option value="house">House</option>
+                  <option value="villa">Villa</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="listPrice">Monthly Rent (₹) *</label>
+                <input
+                  type="number"
+                  id="listPrice"
+                  placeholder="e.g., 35000"
+                  min="5000"
+                  max="300000"
+                  step="1000"
+                  required
+                />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+              <div class="field">
+                <label for="listFurnished">Furnishing</label>
+                <select id="listFurnished">
+                  <option value="false">Unfurnished</option>
+                  <option value="true">Furnished</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="listFloor">Floor Number</label>
+                <input
+                  type="number"
+                  id="listFloor"
+                  placeholder="e.g., 5"
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+              <div class="field">
+                <label for="listTotalFloors">Total Floors</label>
+                <input
+                  type="number"
+                  id="listTotalFloors"
+                  placeholder="e.g., 12"
+                  min="1"
+                />
+              </div>
+              <div class="field">
+                <label for="listParking">Parking Spaces</label>
+                <input
+                  type="number"
+                  id="listParking"
+                  placeholder="e.g., 1"
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.8rem;">
+              <div class="field" style="display: flex; align-items: center; gap: 0.5rem; padding-top: 1rem;">
+                <input type="checkbox" id="listLift" />
+                <label for="listLift" style="margin: 0;">Lift Available</label>
+              </div>
+              <div class="field" style="display: flex; align-items: center; gap: 0.5rem; padding-top: 1rem;">
+                <input type="checkbox" id="listPowerBackup" />
+                <label for="listPowerBackup" style="margin: 0;">Power Backup</label>
+              </div>
+              <div class="field" style="display: flex; align-items: center; gap: 0.5rem; padding-top: 1rem;">
+                <input type="checkbox" id="listSecurity" />
+                <label for="listSecurity" style="margin: 0;">24/7 Security</label>
+              </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+              <div class="field">
+                <label for="listFacing">Facing Direction</label>
+                <select id="listFacing">
+                  <option value="">Select</option>
+                  <option value="North">North</option>
+                  <option value="South">South</option>
+                  <option value="East">East</option>
+                  <option value="West">West</option>
+                  <option value="North-East">North-East</option>
+                  <option value="North-West">North-West</option>
+                  <option value="South-East">South-East</option>
+                  <option value="South-West">South-West</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="listPropertyAge">Property Age (years)</label>
+                <input
+                  type="number"
+                  id="listPropertyAge"
+                  placeholder="e.g., 3"
+                  min="0"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="listDescription">Description *</label>
+              <textarea
+                id="listDescription"
+                rows="4"
+                placeholder="Describe your property, nearby facilities, and what makes it special..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="field">
+              <label for="listImageUrl">Image URL</label>
+              <input
+                type="url"
+                id="listImageUrl"
+                placeholder="https://example.com/image.jpg"
+              />
+            </div>
+
+            <div class="field">
+              <label for="listAmenities">Amenities (comma-separated)</label>
+              <input
+                type="text"
+                id="listAmenities"
+                placeholder="e.g., WiFi, AC, Swimming Pool, Gym, Parking"
+              />
+            </div>
+
+            <div class="field">
+              <label for="listNearby">Nearby Locations (comma-separated)</label>
+              <input
+                type="text"
+                id="listNearby"
+                placeholder="e.g., Metro Station - 800m, Shopping Mall - 1.2km"
+              />
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--full">
+              List Property
+            </button>
+            <p id="listPropertyStatus" class="auth-form__status"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <span class="nav__logo">Home<span>Rental</span></span>
+          <p>Designed for modern renters and hosts.</p>
+        </div>
+        <div class="footer__links">
+          <a href="#top">Home</a>
+          <a href="#explore">Explore</a>
+          <a href="#host">Become a host</a>
+        </div>
+        <div class="footer__meta">
+          <span>© <span id="yearSpan"></span> Home Rental Service</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
+
