@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: house-frontend
+spec:
+  replicas: 2
+  selector: 
+    matchlabels: 
+      app: house-frontend
+  template:
+    metadata:
+      labels:
+        app: house-frontend
+    spec:    
+      containers:
+        - name: house-frontend
+          image: sudhir/house-frontend:latest
+          ports:
+            - containers

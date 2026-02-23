@@ -1,0 +1,17 @@
+com\houserentalservice\user\UserRepository.class
+com\houserentalservice\auth\AuthService.class
+com\houserentalservice\auth\AuthController.class
+com\houserentalservice\security\JwtAuthenticationFilter.class
+com\houserentalservice\security\SecurityConfig.class
+com\houserentalservice\property\Property.class
+com\houserentalservice\auth\AuthRequest.class
+com\houserentalservice\user\Role.class
+com\houserentalservice\property\PropertyDataInitializer.class
+com\houserentalservice\HomeRentalServiceApplication.class
+com\houserentalservice\user\User.class
+com\houserentalservice\auth\AuthResponse.class
+com\houserentalservice\property\PropertyController.class
+com\houserentalservice\property\PropertyImage.class
+com\houserentalservice\auth\RegisterRequest.class
+com\houserentalservice\property\PropertyRepository.class
+com\houserentalservice\security\JwtService.class
