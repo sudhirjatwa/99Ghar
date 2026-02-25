@@ -6,15 +6,57 @@ on:
       - main
 
 jobs:
-  build-and-push:
+
+  # =========================
+  # 🔹 BUILD STAGE
+  # =========================
+  build:
+    name: 🔹 Build Stage
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Debug Secret
-        run: echo "Username is ${{ secrets.DOCKER_USERNAME }}"  
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build Backend
+        run: mvn clean compile
+        working-directory: ./backend
+
+
+  # =========================
+  # 🔹 TEST STAGE
+  # =========================
+  test:
+    name: 🔹 Test Stage
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Run Backend Tests
+        run: mvn test
+        working-directory: ./backend
+
+
+  # =========================
+  # 🔹 DOCKER STAGE
+  # =========================
+  docker:
+    name: 🔹 Docker Stage
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
@@ -22,12 +64,25 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build Backend Image
+      - name: Build & Push Backend Image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/house-backend:latest ./backend
           docker push ${{ secrets.DOCKER_USERNAME }}/house-backend:latest
 
-      - name: Build Frontend Image
+      - name: Build & Push Frontend Image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/house-frontend:latest ./frontend
           docker push ${{ secrets.DOCKER_USERNAME }}/house-frontend:latest
+
+
+  # # =========================
+  # # 🔹 DEPLOY STAGE (Optional)
+  # # =========================
+  # deploy:
+  #   name: 🔹 Deploy Stage
+  #   runs-on: ubuntu-latest
+  #   needs: docker
+
+  #   steps:
+  #     - name: Deploy Message
+  #       run: echo "Deployment step can be added here (Kubernetes, Helm, etc.)"
