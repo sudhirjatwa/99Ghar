@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 21,
+  "agentName": "github-runner-for-sonarqube",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus22.actions.githubusercontent.com/zvzI7OqXtKmkaX5kqZODcducLjwkqeVtkZF61Wj7gx9ih4zONk/",
+  "gitHubUrl": "https://github.com/sudhirjatwa/99Ghar",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
