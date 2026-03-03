@@ -60,11 +60,8 @@ jobs:
 
      - name: SonarQube Scan
        run: |
-         mvn sonar:sonar `
-           -Dsonar.projectKey=house-backend `
-           -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} `
-           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-       working-directory: ./backend
+        run: mvn sonar:sonar -Dsonar.projectKey=house-backend -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        working-directory: ./backend
 
 
 
