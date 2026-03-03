@@ -58,9 +58,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: SonarQube Scan
+      - name: Debug Sonar Command
         working-directory: ./backend
-        run: mvn sonar:sonar -Dsonar.projectKey=house-backend -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: |
+          echo "HOST URL = ${{ secrets.SONAR_HOST_URL }}"
+          mvn -version
 
 
 
