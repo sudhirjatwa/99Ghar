@@ -51,17 +51,16 @@ jobs:
 # 🔹 SONARQUBE STAGE
 # =========================
   sonar:
-   name: 🔹 SonarQube Analysis
-   runs-on: self-hosted
-   needs: test
+    name: 🔹 SonarQube Analysis
+    runs-on: self-hosted
+    needs: test
 
-   steps:
-     - uses: actions/checkout@v4
+    steps:
+      - uses: actions/checkout@v4
 
-     - name: SonarQube Scan
-       run: |
-        run: mvn sonar:sonar -Dsonar.projectKey=house-backend -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      - name: SonarQube Scan
         working-directory: ./backend
+        run: mvn sonar:sonar -Dsonar.projectKey=house-backend -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
 
 
