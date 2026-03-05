@@ -60,10 +60,17 @@ jobs:
 
       - name: Debug Sonar Command
         working-directory: ./backend
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         run: |
-          echo "HOST URL = ${{ secrets.SONAR_HOST_URL }}"
-          mvn -version
+          Write-Host "Using Sonar Host: $env:SONAR_HOST_URL"
+          mvn sonar:sonar `
+            -Dsonar.projectKey=house-backend `
+            -Dsonar.host.url=$env:SONAR_HOST_URL `
+            -Dsonar.login=$env:SONAR_TOKEN
 
+            
 
 
   # =========================
