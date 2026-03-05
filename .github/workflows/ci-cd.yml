@@ -70,9 +70,6 @@ jobs:
             -Dsonar.host.url=$env:SONAR_HOST_URL `
             -Dsonar.login=$env:SONAR_TOKEN
 
-            
-
-
   # =========================
   # 🔹 DOCKER STAGE
   # =========================
