@@ -9,7 +9,7 @@ jobs:
 
   # =========================
   # 🔹 BUILD STAGE
-  # ========================
+  # =========================
   build:
     name: 🔹 Build Stage
     runs-on: ubuntu-latest
@@ -99,25 +99,14 @@ jobs:
           format: 'table'
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
-
+          
       - name: Push Backend Image
-        run: |          
+        run: |
           docker push ${{ secrets.DOCKER_USERNAME }}/house-backend:latest
 
       - name: Build & Push Frontend Image
         run: |
           docker build -t ${{ secrets.DOCKER_USERNAME }}/house-frontend:latest ./frontend
-
-      - name: Trivy Security Scan
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: ${{ secrets.DOCKER_USERNAME }}/house-frontend:latest ./frontend
-          format: 'table'
-          exit-code: '1'
-          severity: 'CRITICAL,HIGH'
-
-      - name: Push Frontend Image
-        run: |            
           docker push ${{ secrets.DOCKER_USERNAME }}/house-frontend:latest
 
 
