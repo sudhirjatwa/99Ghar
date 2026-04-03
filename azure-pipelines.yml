@@ -1,0 +1,59 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+
+- stage: Build
+  jobs:
+  - job: BuildJob
+    steps:
+    - checkout: self
+    - task: JavaToolInstaller@0
+      inputs:
+        versionSpec: '17'
+        jdkSourceOption: 'PreInstalled'
+
+    - script: |
+        cd backend
+        mvn clean compile
+
+- stage: Test
+  dependsOn: Build
+  jobs:
+  - job: TestJob
+    steps:
+    - checkout: self
+    - script: |
+        cd backend
+        mvn test
+
+- stage: Sonar
+  dependsOn: Test
+  jobs:
+  - job: SonarJob
+    steps:
+    - checkout: self
+    - script: |
+        cd backend
+        mvn clean verify sonar:sonar \
+        -Dsonar.projectKey=house-backend \
+        -Dsonar.host.url=$(SONAR_HOST_URL) \
+        -Dsonar.login=$(SONAR_TOKEN)
+
+- stage: Docker
+  dependsOn: Sonar
+  jobs:
+  - job: DockerJob
+    steps:
+    - checkout: self
+    - script: |
+        echo $(DOCKER_PASSWORD) | docker login -u $(DOCKER_USERNAME) --password-stdin
+
+        docker build -t $(DOCKER_USERNAME)/house-backend:latest ./backend
+        docker push $(DOCKER_USERNAME)/house-backend:latest
+
+        docker build -t $(DOCKER_USERNAME)/house-frontend:latest ./frontend
+        docker push $(DOCKER_USERNAME)/house-frontend:latest
